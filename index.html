@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+
+<body>
+    <script>
+
+
+        function playRound(playerSelection, computerSelection) {
+            
+
+
+        }
+
+
+        //Ask the player to choose rock, paper or scissors
+
+
+        //Ask the computer to choose rock paper of scissors
+
+        //Determine winner with rock > scissors > paper > rock logic
+
+
+        //choose rock, paper, or scissors, by random
+        function getComputerChoice() {
+            //define a list of choices
+            let list = ["Rock", "Paper", "Scissors"];
+            //randomly generate a number 0 to 3, that corresponds to a list item
+            //console.log("Computer choses ", list[Math.ceil((Math.random() * 3) - 1)]);
+            return list[Math.ceil((Math.random() * 3) - 1)];
+        }
+
+
+        //const playerSelection = "rock";
+        function playerSelection() {
+            playerChoice = prompt("Choose Rock, Paper, or Scissors");
+            if (playerChoice === "Rock") {
+                return playerChoice
+            } else if (playerChoice === "Paper") {
+                return playerChoice
+            } else if (playerChoice === "Scissors") {
+                return playerChoice
+            } else {
+                console.log("Check your input, it has to be a capital R, P, or S!");
+                playerSelection();
+            };
+        }
+
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+
+    </script>
+</body>
+
+</html>
