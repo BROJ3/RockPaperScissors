@@ -12,18 +12,48 @@
 
 
         function playRound(playerSelection, computerSelection) {
-            
 
+            //game logic
+            //get answers from player and computer
+            mojIzbor = playerSelection();
+            larinIzbor = getComputerChoice();
 
+            //compare them
+            // if rock
+            if (mojIzbor[0] === 'R') {
+                console.log("You played Rock....")
+                if (larinIzbor === 'Scissors') {
+                    console.log("Computer played Scissors. You Win!");
+                } else if (larinIzbor === 'Paper') {
+                    console.log("Computer played Paper.You Lost.")
+                } else if (larinIzbor === "Rock") {
+                    console.log("Computer played Rock. It's a Tie!")
+                }
+
+            // if paper
+            } else if (mojIzbor[0] === 'P') {
+                console.log("You played Paper....")
+                if (larinIzbor === 'Scissors') {
+                    console.log("Computer played Scissors.You lost.");
+                } else if (larinIzbor === 'Paper') {
+                    console.log("Computer played Paper. It's a tie!")
+                } else if (larinIzbor === "Rock") {
+                    console.log("Computer played Rock. You Win!")
+                }
+            //if scissors
+            } else if (mojIzbor[0] === 'S') {
+                console.log("You played Scissors....")
+                if (larinIzbor === 'Scissors') {
+                    console.log("Computer played Scissors. It's a Tie!");
+                } else if (larinIzbor === 'Paper') {
+                    console.log("Computer played Paper. You Win!")
+                } else if (larinIzbor === "Rock") {
+                    console.log("Computer played Rock. You Lost.")
+                }
+            }
         }
 
 
-        //Ask the player to choose rock, paper or scissors
-
-
-        //Ask the computer to choose rock paper of scissors
-
-        //Determine winner with rock > scissors > paper > rock logic
 
 
         //choose rock, paper, or scissors, by random
@@ -31,28 +61,25 @@
             //define a list of choices
             let list = ["Rock", "Paper", "Scissors"];
             //randomly generate a number 0 to 3, that corresponds to a list item
-            //console.log("Computer choses ", list[Math.ceil((Math.random() * 3) - 1)]);
             return list[Math.ceil((Math.random() * 3) - 1)];
         }
 
 
         //const playerSelection = "rock";
         function playerSelection() {
-            playerChoice = prompt("Choose Rock, Paper, or Scissors");
-            if (playerChoice === "Rock") {
-                return playerChoice
-            } else if (playerChoice === "Paper") {
-                return playerChoice
-            } else if (playerChoice === "Scissors") {
+            playerChoice = prompt("Choose Rock, Paper, or Scissors").toUpperCase();
+            
+            if (playerChoice[0] === "R" || playerChoice[0] === "P" || playerChoice[0] === "S") {
                 return playerChoice
             } else {
                 console.log("Check your input, it has to be a capital R, P, or S!");
-                playerSelection();
             };
         }
 
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        function igraj () {
+            console.log(playRound(playerSelection, computerSelection));
+        }
 
     </script>
 </body>
