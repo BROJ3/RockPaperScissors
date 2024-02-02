@@ -10,8 +10,10 @@
 <body>
     <script>
 
-
+        let me = 0;
+        let AI = 0;
         function playRound(playerSelection, computerSelection) {
+
 
             //game logic
             //get answers from player and computer
@@ -20,35 +22,50 @@
 
             //compare them
             // if rock
+
+
             if (mojIzbor[0] === 'R') {
                 console.log("You played Rock....")
                 if (larinIzbor === 'Scissors') {
                     console.log("Computer played Scissors. You Win!");
+                    me = me + 1;
                 } else if (larinIzbor === 'Paper') {
                     console.log("Computer played Paper.You Lost.");
+                    AI = AI + 1;
                 } else if (larinIzbor === "Rock") {
                     console.log("Computer played Rock. It's a Tie!");
+                    me = me+0.5;
+                    AI = AI+0.5;
                 }
 
-            // if paper
+                // if paper
             } else if (mojIzbor[0] === 'P') {
                 console.log("You played Paper....")
                 if (larinIzbor === 'Scissors') {
                     console.log("Computer played Scissors.You lost.");
+                    AI = AI + 1;
                 } else if (larinIzbor === 'Paper') {
                     console.log("Computer played Paper. It's a tie!");
+                    me = me+0.5;
+                    AI = AI+0.5;
                 } else if (larinIzbor === "Rock") {
                     console.log("Computer played Rock. You Win!");
+                    me = me + 1;
+
                 }
-            //if scissors
+                //if scissors
             } else if (mojIzbor[0] === 'S') {
                 console.log("You played Scissors....")
                 if (larinIzbor === 'Scissors') {
                     console.log("Computer played Scissors. It's a Tie!");
+                    me = me+0.5;
+                    AI = AI+0.5;
                 } else if (larinIzbor === 'Paper') {
                     console.log("Computer played Paper. You Win!")
+                    me = me + 1;
                 } else if (larinIzbor === "Rock") {
                     console.log("Computer played Rock. You Lost.")
+                    AI = AI + 1;
                 }
             }
         }
@@ -66,7 +83,7 @@
         //const playerSelection = "rock";
         function playerSelection() {
             playerChoice = prompt("Choose Rock, Paper, or Scissors").toUpperCase();
-            
+
             if (playerChoice[0] === "R" || playerChoice[0] === "P" || playerChoice[0] === "S") {
                 return playerChoice
             } else {
@@ -75,8 +92,24 @@
         }
 
         const computerSelection = getComputerChoice();
-        function igraj () {
-            console.log(playRound(playerSelection, computerSelection));
+
+        function igraj() {
+
+
+            //play 5 times
+            for (let i = 0; i < 5; i++) {
+                console.log(playRound(playerSelection, computerSelection));
+                //keep counter of winners
+
+                console.log("Me: ", me)
+                console.log("AI: ", AI)
+
+
+
+            }
+
+
+
         }
 
     </script>
