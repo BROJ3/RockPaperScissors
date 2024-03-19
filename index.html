@@ -17,8 +17,56 @@
 
 
     <p>Currently in construction</p>
+    <h3>Objectives</h3>
+    <ul>
+        <li>Push any button to start game - jesam</li>
+        <li>Tie button correctly to choice - jesam</li>
+        <li>Add div that displays the result and score - jesam</li>
+        <li>add 5 rounds</li>
+        
+    </ul>
+
+    <div class="results"></div>
+    <div class="scores"></div>
+
+
+    <button class="choiceButton" id="rock">Rock</button>
+    <button class="choiceButton" id="paper">Paper</button>
+    <button class="choiceButton" id="scissors">Scissors</button>
 
     <script>
+
+            const btnR = document.querySelector("#rock");
+            const btnP = document.querySelector("#paper");
+            const btnS = document.querySelector("#scissors");
+
+            const resultsDiv = document.querySelector('.results');
+            const scoreKeeping = document.querySelector('.scores');
+
+            
+
+            btnR.onclick = () => igraj('Rock');
+            btnP.onclick = () => igraj('Paper');
+            btnS.onclick = () => igraj('Scissors');
+
+
+            //btn.onclick = () => alert("Button text: " + btn.textContent);
+
+            // Function to update scores
+            function updateScores(event) {
+                var myScore = 0;
+                var AIScore = 0;
+                var buttonText = event.target.textContent;
+                //alert("Button text: " + buttonText);
+            }
+
+            // Get all buttons with class 'myButton'
+            var buttons = document.querySelectorAll('.choiceButton');
+
+            // Loop through each button and add event listener
+            buttons.forEach(function(button) {
+                button.addEventListener('click', updateScores);
+            });
 
             let me = 0;
             let AI = 0;
@@ -31,83 +79,40 @@
 
             //game logic
             //get answers from player and computer
-            mojIzbor = playerSelection();
-            larinIzbor = getComputerChoice();
+            mojIzbor = igraj.arguments[0];
+            computerChoice = getComputerChoice();
 
             console.log("You played: ", mojIzbor);
-            console.log("Advanced AI machine played: ", larinIzbor);
+            console.log("Advanced AI machine played: ", computerChoice);
 
             //begin tryout zone
 
-            if ((mojIzbor[0] === 'R' && larinIzbor === 'Scissors') ||
-                (mojIzbor[0] === 'P' && larinIzbor === 'Rock')||
-                (mojIzbor[0] === 'S' && larinIzbor === 'Paper')) {
+            if ((mojIzbor[0] === 'R' && computerChoice === 'Scissors') ||
+                (mojIzbor[0] === 'P' && computerChoice === 'Rock')||
+                (mojIzbor[0] === 'S' && computerChoice === 'Paper')) {
                 me = me+1
-                console.log("You win!") 
-            } else if ( mojIzbor[0] === larinIzbor [0]) {
-                console.log("it's a tie!") 
+                console.log("You win!")
+                resultsDiv.textContent = 'You Win!'; 
+                scoreKeeping.textContent = "You: "+ me + " || "+ "Computer: "+AI; 
+            } else if ( mojIzbor[0] === computerChoice [0]) {
+
                 me = me+0.5;
                 AI = AI + 0.5;
+
+                console.log("it's a tie!") 
+                resultsDiv.textContent = "it's a tie!"; 
+                scoreKeeping.textContent = "You: "+ me + " || "+ "Computer: "+AI; 
+
             } else {
-                console.log("You lose!")
                 AI = AI + 1;
+
+                console.log("You lose!")
+                resultsDiv.textContent = "You lose!"; 
+                scoreKeeping.textContent = "You: "+ me + " || "+ "Computer: "+AI; 
             }
             
 
-            //end tryout zone
 
-
-
-            //compare them
-            // if selection
-            // determine winner
-            // append scores
-
-/*
-            if (mojIzbor[0] === 'R') {
-                console.log("You played Rock....")
-                if (larinIzbor === 'Scissors') {
-                    console.log("Computer played Scissors. You Win!");
-                    me = me + 1;
-                } else if (larinIzbor === 'Paper') {
-                    console.log("Computer played Paper.You Lost.");
-                    AI = AI + 1;
-                } else if (larinIzbor === "Rock") {
-                    console.log("Computer played Rock. It's a Tie!");
-                    me = me+0.5;
-                    AI = AI+0.5;
-                }
-
-                // if paper
-            } else if (mojIzbor[0] === 'P') {
-                console.log("You played Paper....")
-                if (larinIzbor === 'Scissors') {
-                    console.log("Computer played Scissors.You lost.");
-                    AI = AI + 1;
-                } else if (larinIzbor === 'Paper') {
-                    console.log("Computer played Paper. It's a tie!");
-                    me = me+0.5;
-                    AI = AI+0.5;
-                } else if (larinIzbor === "Rock") {
-                    console.log("Computer played Rock. You Win!");
-                    me = me + 1;
-
-                }
-                //if scissors
-            } else if (mojIzbor[0] === 'S') {
-                console.log("You played Scissors....")
-                if (larinIzbor === 'Scissors') {
-                    console.log("Computer played Scissors. It's a Tie!");
-                    me = me+0.5;
-                    AI = AI+0.5;
-                } else if (larinIzbor === 'Paper') {
-                    console.log("Computer played Paper. You Win!")
-                    me = me + 1;
-                } else if (larinIzbor === "Rock") {
-                    console.log("Computer played Rock. You Lost.")
-                    AI = AI + 1;
-                }
-            }*/
         }
 
 
@@ -120,24 +125,19 @@
         }
 
 
-        //const playerSelection = "rock";
-        function playerSelection() {
-            playerChoice = prompt("Choose Rock, Paper, or Scissors").toUpperCase();
-
-            if (playerChoice[0] === "R" || playerChoice[0] === "P" || playerChoice[0] === "S") {
-                return playerChoice
-            } else {
-                console.log("Check your input, it has to be a capital R, P, or S!");
-            };
-        }
-
         const computerSelection = getComputerChoice();
 
-        function igraj() {
+        function igraj(izbor) {
 
 
-        
-            console.log(playRound(playerSelection, computerSelection));
+            for (let i = 0; i < 5; i++) {
+                console.log("ALO")
+                //console.log(playRound(izbor, computerSelection));
+                playRound(izbor, computerSelection);
+            }
+            
+
+
             
 
             console.log("Me: ", me)
@@ -157,9 +157,7 @@
 
     </script>
 
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
+    
 
 
 
