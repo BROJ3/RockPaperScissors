@@ -14,12 +14,19 @@
     <h2>You'll have to open up the console and run "igraj()"</h2>
     <h2>After that, have fun :)))</h2>
 
+
+
+    <p>Currently in construction</p>
+
     <script>
 
-        let me = 0;
-        let AI = 0;
+            let me = 0;
+            let AI = 0;
 
         function playRound(playerSelection, computerSelection) {
+
+            me = 0;
+            AI=0;
 
 
             //game logic
@@ -27,13 +34,36 @@
             mojIzbor = playerSelection();
             larinIzbor = getComputerChoice();
 
+            console.log("You played: ", mojIzbor);
+            console.log("Advanced AI machine played: ", larinIzbor);
+
+            //begin tryout zone
+
+            if ((mojIzbor[0] === 'R' && larinIzbor === 'Scissors') ||
+                (mojIzbor[0] === 'P' && larinIzbor === 'Rock')||
+                (mojIzbor[0] === 'S' && larinIzbor === 'Paper')) {
+                me = me+1
+                console.log("You win!") 
+            } else if ( mojIzbor[0] === larinIzbor [0]) {
+                console.log("it's a tie!") 
+                me = me+0.5;
+                AI = AI + 0.5;
+            } else {
+                console.log("You lose!")
+                AI = AI + 1;
+            }
+            
+
+            //end tryout zone
+
+
 
             //compare them
             // if selection
             // determine winner
             // append scores
 
-
+/*
             if (mojIzbor[0] === 'R') {
                 console.log("You played Rock....")
                 if (larinIzbor === 'Scissors') {
@@ -77,7 +107,7 @@
                     console.log("Computer played Rock. You Lost.")
                     AI = AI + 1;
                 }
-            }
+            }*/
         }
 
 
